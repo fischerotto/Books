@@ -1,0 +1,97 @@
+<mvc:View
+	controllerName="org.ubb.books.controller.CheckedOutBooks"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				id="table"
+				rows="{/CBooks}">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="tableTitle" text="Welcome to the library"/>
+						<m:ToolbarSpacer/>
+						<m:DatePicker
+			id="DP1"
+			placeholder="Enter Date"
+			change="filterGlobally"
+			class="sapUiSmallMarginBottom"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+     <Column
+						id="isbn"
+						sortProperty="Isbn"
+						filterProperty="Isbn">
+						<m:Label text="ISBN" />
+						<template>
+							<m:Text text="{Isbn}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="author"
+						sortProperty="Author"
+						filterProperty="Author">
+						<m:Label text="Book Author" />
+						<template>
+							<m:Text text="{Author}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="title"
+						sortProperty="Title"
+						filterProperty="Title">
+						<m:Label text="Book Title" />
+						<template>
+							<m:Text text="{Title}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="publishDate"
+						sortProperty="PublishDate"
+						filterProperty="PublishDate">
+						<m:Label text="Publish Date" />
+						<template>
+							<m:Text text="{PublishDate}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="language"
+						sortProperty="Language"
+						filterProperty="Language">
+						<m:Label text="Language" />
+						<template>
+							<m:Text text="{Language}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="availabelBookNr"
+						sortProperty="AvailableBookNr"
+						filterProperty="AvailableBookNr">
+						<m:Label text="Available Book Nr." />
+						<template>
+							<m:Text text="{AvailableBookNr}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="checkOutButton">
+						<m:Label text="Check Out" />
+						<template>
+							<m:Button text="Checkout" press=".checkout" />
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:OverflowToolbar id="infobar"></m:OverflowToolbar>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

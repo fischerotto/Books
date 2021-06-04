@@ -1,0 +1,91 @@
+<View controllerName="org.ubb.books.controller.BookList" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+				<Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
+					<content>
+<f:SimpleForm
+	maxContainerCols="2"
+	editable="true"
+	layout="ResponsiveGridLayout"
+	labelSpanL="2"
+	labelSpanM="2"
+	emptySpanL="2"
+	emptySpanM="2"
+	columnsL="2"
+	columnsM="2">
+	<f:content>
+				<core:Title text="Add new book" />
+				
+				<Label text="ISBN" required="true" />
+    <Input value="{view>/Isbn}" id="bookIsbn" />
+				
+				<Label text="Title" required="true" />
+				<Input value="{view>/Title}" id="bookTitle" />
+
+				<Label text="Author" required="true" />
+				<Input value="{view>/Author}" id="bookAuthor" />
+
+				<Label text="PublishDate" required="true" />
+				<Input value="{view>/PublishDate}" type="Date" id="bookPublishDate" />
+
+				<Label text="Language" required="true" />
+				<Input value="{view>/Language}" id="bookLanguage" />
+
+				<Label text="AvailableBookNr" required="true" />
+				<Input value="{view>/AvailableBookNr}" id="bookAvailableNr" type="Number"/>
+
+				<Label text="TotalBookNr" required="true" />
+				<Input value="{view>/TotalBookNr}" id="bookTotalNr" type="Number" />
+
+				<Button text="Save" press=".addBook"  visible="{= !${editModel>/isEditLive}}"/>
+				<Button text="Edit" press=".editBook"  visible="{editModel>/isEditLive}"/>
+	</f:content>
+</f:SimpleForm>
+	<Table id="idBooksTable" items="{
+			path: '/Books',
+			sorter: {
+				path: 'Title'
+			}
+		}" growing="true" growingThreshold="10">
+		<columns>
+			<Column>
+				<Text text="Title" />
+			</Column>
+			<Column>
+				<Text text="Author" />
+			</Column>
+			<Column>
+				<Text text="Published on" />
+			</Column>
+			<Column>
+				<Text text="Language" />
+			</Column>
+			<Column>
+				<Text text="Available books" />
+			</Column>
+			<Column>
+				<Text text="Total books" />
+			</Column>
+			<Column>
+				<Text text="Edit" />
+			</Column>
+			<Column>
+				<Text text="Delete" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{Title}" text="{Isbn}" />
+					<Text text="{Author}" />
+					<Text text="{PublishDate}" />
+					<Text text="{Language}" />
+					<Text text="{AvailableBookNr}" />
+					<Text text="{TotalBookNr}" />
+					<Button icon="sap-icon://edit" text="Edit" press=".startBookEdit" />
+					<Button icon="sap-icon://delete" text="Delete" press=".deleteBook" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</content>
+				</Page>
+</View>

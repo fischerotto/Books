@@ -1,0 +1,94 @@
+<mvc:View
+	controllerName="org.ubb.books.controller.CheckedOutBooks"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showHeader="false"
+		enableScrolling="false"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				id="table"
+				rows="{/CHOBooks}"
+				visibleRowCount="7">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="tableTitle" text="Checked Out Books"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column
+						id="firstName"
+						sortProperty="FirstName"
+						filterProperty="FirstName">
+						<m:Label text="First Name" />
+						<template>
+							<m:Text text="{FirstName}" wrapping="false" />
+						</template>
+					</Column>
+				<Column
+						id="lastName"
+						sortProperty="LastName"
+						filterProperty="FirstName">
+						<m:Label text="Last name" />
+						<template>
+							<m:Text text="{LastName}" wrapping="false" />
+						</template>
+					</Column>
+					<Column width="8rem">
+       <m:Label text="Checkout Date" />
+								<template>
+         <m:Label text="{
+          path: 'CheckoutDate',
+										formatter : '.formatDate'
+          }" />
+     				</template>
+					</Column>
+					<Column width="8rem">
+       <m:Label text="Return Date" />
+								<template>
+         <m:Label text="{
+          path: 'ReturnDate',
+										formatter : '.formatDate'
+          }" />
+     			</template>
+					</Column>
+					 <Column
+						id="isbn"
+						sortProperty="Isbn"
+						filterProperty="Isbn">
+						<m:Label text="ISBN" />
+						<template>
+							<m:Text text="{Isbn}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="author"
+						sortProperty="Author"
+						filterProperty="Author">
+						<m:Label text="Book Author" />
+						<template>
+							<m:Text text="{Author}" wrapping="false" />
+						</template>
+					</Column>
+					<Column
+						id="title"
+						sortProperty="Title"
+						filterProperty="Title">
+						<m:Label text="Book Title" />
+						<template>
+							<m:Text text="{Title}" wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:OverflowToolbar id="infobar"></m:OverflowToolbar>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>
